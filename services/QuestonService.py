@@ -19,5 +19,9 @@ def create_question_in_db(question_text: str) -> [QuestionDocument]:
     return question_doc
 
 
-def get_questions():
+def get_all_questions():
     return QuestionDocument.objects
+
+
+def get_question(q_id):
+    return QuestionDocument.objects.filter(id=q_id).first()
