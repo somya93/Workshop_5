@@ -1,4 +1,4 @@
-from flask_restful import reqparse, Resource
+from flask_restful import reqparse, Resource, request
 from flask import jsonify
 from services.QuestonService import *
 
@@ -9,11 +9,17 @@ patch_parser = reqparse.RequestParser()
 patch_parser.add_argument('reply', type=str)
 # to add more arguments... patch_parser.add_argument('example_arg', type=str)
 
+
 class Questions(Resource):
 
     def get(self, q_id=None):
+        min_reply = request.args.get('min_replies')
+
         if q_id:
             return jsonify(get_question(q_id))
+
+        if min_reply:
+            return jsonify(get_questions_min_replies(min_reply))
 
         return jsonify(get_all_questions())
 

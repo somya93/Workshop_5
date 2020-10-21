@@ -18,6 +18,8 @@ def create_question_in_db(question_text: str) -> [QuestionDocument]:
     question_doc.save()
     return question_doc
 
+def get_questions_min_replies(min_replies: int):
+    return QuestionDocument.objects(num_replies__gte=min_replies)
 
 def get_all_questions():
     return QuestionDocument.objects
