@@ -13,6 +13,7 @@ app.config['MONGODB_SETTINGS'] = {
 initialize_db(app)
 app.json_encoder = MongoEngineJSONEncoder
 api = Api(app)
+
 api.add_resource(Questions,
                  '/questions',
                  '/questions/<string:q_id>')
