@@ -1,12 +1,12 @@
 from models.Question import QuestionDocument
 import datetime
 
-# def update_question_in_db(updated_question: QuestionDocument):
-#     the_doc = QuestionDocument.objects(id=new_question.primary_key).first()
-#     # objects returns a list, first() returns the first result
-#
-#     the_doc.replies = new_question.replies
-#     the_doc.save()
+
+def add_reply_to_question(q_id: str, reply: str):
+    the_q = QuestionDocument.objects(id=q_id).first()
+    the_q.update(push__replies=reply, inc__num_replies=1)
+    the_q.reload()
+    return the_q
 
 
 def create_question_in_db(question_text: str) -> [QuestionDocument]:
