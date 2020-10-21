@@ -1,6 +1,6 @@
 # Workshop 4
 
-In this workshop, we'll be extending our previous project into a API.
+In this workshop, we'll be extending our previous project into an API.
 
 ## Prerequisites
 
