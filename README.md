@@ -12,18 +12,10 @@ Postman is an awesome development tool to test our REST APIs.
 Make sure to have these dependencies added to your project interpreter in PyCharm.
 
 1. [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-2. [Flask-RESTful](https://flask-rescful.readthedocs.io/en/latest/)
+2. [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/)
 3. [flask-mongoengine](https://docs.mongoengine.org/projects/flask-mongoengine/en/latest/)
 
 <b> Flask </b> is a framework that allows us to easily setup a web server with Python. It's a bit minimalistic, so to make it work better for our needs we add Flask-RESTful, which introduces a lot of helpful methods to handle creating a REST API. Flask-mongoengine is the same as the mongoengine we've used previously; it just adds a little more code to integrate mongoengine with our Flask app.
-
-## Disclaimer
-
-A lot of the terminology in Flask, or the terminology that I use to describe certain features, is not the same terminology that Karim uses to describe SOAs. For example, Resources are not entities, but more like HTTP controllers in Flask-RESTful. Services are not necessarily Services in a SOA, either.
-
-We're building a monolithic web-server, meaning that this server can only be deployed as one whole instance. A SOA back-end will have different parts deployed separately to support better scaling. However, if you're monolith server is well-designed, you could re-use the code to break down the project into multiple deployed services.
-
-What we're concerned here is with the basics. And the basics are the same no matter whether your project is deployed as one instance or many instances that communicate to one another.
 
 ## New Folder Structure
 
