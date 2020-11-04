@@ -18,6 +18,8 @@ api.add_resource(Questions,
                  '/questions',
                  '/questions/<string:q_id>')
 
+# localhost:5000/questions/kldhfj;asdhfkjasdhfkjasdhflkqj23;rjh/creator
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'
