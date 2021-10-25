@@ -39,10 +39,10 @@ The utils folder contains any miscellaneous code we use in our app.
 We initialize our Flask web-server in app.py by creating a Flask app and passing on our MongoDB info.
 
 ```
-app = Flask(__name__)
+app = Flask(__name__)  # Creating a FLASK app
 app.config['MONGODB_SETTINGS'] = {
-    'db': 'REST_API',
-    'host': 'mongodb://localhost:27017/REST_API'
+    'db': 'app-rest',
+    'host': 'mongodb://localhost:27017/app-rest'
 }
 
 initialize_db(app)
@@ -67,18 +67,18 @@ In Flask-RESTful, resources are basically HTTP controllers. Here, we define what
 class RiderResource(Resource):
     def get(self, rider_id=None):
         response = get_rider(rider_id)
-        return make_response(convertToHTMLString(response), 200, headers)
+        return make_response(response.to_json(), 200, headers)
 
     def post(self):
         args = post_parser.parse_args()
         response = create_rider(args.name, args.premium)
-        return make_response(convertToHTMLString(response), 200, headers)
+        return make_response(response.to_json(), 200, headers)
 
     def patch(self, rider_id=None):
         if rider_id is not None:
             args = patch_parser.parse_args()
             response = update_rider(rider_id, args.premium)
-            return make_response(convertToHTMLString(response), 200, headers)
+            return make_response(response.to_json(), 200, headers)
         return 400
 ```
 
