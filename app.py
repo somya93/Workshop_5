@@ -6,8 +6,8 @@ from utils.JSONEncoder import MongoEngineJSONEncoder
 
 app = Flask(__name__)  # Creating a FLASK app
 app.config['MONGODB_SETTINGS'] = {
-    'db': 'REST_API',
-    'host': 'mongodb://localhost:27017/REST_API'
+    'db': 'app-rest',
+    'host': 'mongodb://localhost:27017/app-rest'
 }
 
 initialize_db(app)
