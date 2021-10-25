@@ -5,8 +5,8 @@ db = MongoEngine()
 
 
 def initialize_db(app):
-    db.init_app(app)
-    init_riders()
+    db.init_app(app)  # Create the db
+    init_riders()  # Populate it with default riders
 
 
 def fetch_engine():

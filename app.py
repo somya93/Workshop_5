@@ -4,7 +4,7 @@ from database.db import initialize_db
 from resources.RiderResource import RiderResource
 from utils.JSONEncoder import MongoEngineJSONEncoder
 
-app = Flask(__name__)
+app = Flask(__name__)  # Creating a FLASK app
 app.config['MONGODB_SETTINGS'] = {
     'db': 'REST_API',
     'host': 'mongodb://localhost:27017/REST_API'
@@ -12,10 +12,11 @@ app.config['MONGODB_SETTINGS'] = {
 
 initialize_db(app)
 app.json_encoder = MongoEngineJSONEncoder
-api = Api(app)
+api = Api(app)  # Creating a REST API for the app
 
 
 # http://localhost:5000/rider
+# http://localhost:5000/rider/rider_id
 # http://localhost:5000/rider/rider_id?arg=value
 api.add_resource(RiderResource,
                  '/rider',

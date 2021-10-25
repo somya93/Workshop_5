@@ -1,10 +1,10 @@
 # Workshop 5
 
-In this workshop, we'll be introducing how to build an API.
+In this workshop, we'll be introducing how to build a REST API.
 
 ## Prerequisites
 
-1. Install [Postman](https://www.postman.com/) - you don't need to create an account.
+1. Install [Postman](https://www.postman.com/downloads/) - you don't need to create an account.
 
 Postman is an awesome development tool to test our REST APIs.
 

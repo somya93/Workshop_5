@@ -1,5 +1,5 @@
 from flask_restful import reqparse, Resource
-from flask import jsonify, make_response
+from flask import make_response   # returns an HTML response
 from services.RiderService import *
 
 post_parser = reqparse.RequestParser()
@@ -12,11 +12,13 @@ patch_parser.add_argument('premium', type=bool, default=False)
 headers = {'Content-Type': 'text/html'}
 
 
-def convertToHTMLString(riders) -> str:
+def convertToHTMLString(riders) -> str:  # converts a list of rider objects into a string
     to_return = ""
     for rider in riders:
         to_return += f"<h3>{rider.id}</h3>"
-        premium_string = "is" if rider.premium else "is not"
+        premium_string = "is"
+        if not rider.premium:
+            premium_string = "is not"
         to_return += f"<p>{rider.name} {premium_string} a premium rider.</p>"
     return to_return
 
