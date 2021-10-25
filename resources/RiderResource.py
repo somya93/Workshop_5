@@ -13,17 +13,6 @@ patch_parser.add_argument('premium', type=bool, default=False)
 headers = {'Content-Type': 'application/json'}
 
 
-def convertToHTMLString(riders) -> str:  # converts a list of rider objects into a string
-    to_return = ""
-    for rider in riders:
-        to_return += f"<h3>{rider.id}</h3>"
-        premium_string = "is"
-        if not rider.premium:
-            premium_string = "is not"
-        to_return += f"<p>{rider.name} {premium_string} a premium rider.</p>"
-    return to_return
-
-
 class RiderResource(Resource):
     def get(self, rider_id=None):
         response = get_rider(rider_id)
