@@ -4,10 +4,6 @@ from flask import jsonify, make_response
 from flask_restful import reqparse, Resource
 from flask import abort
 
-
-from exceptions.ApiException import ApiException
-from utils.Hash import get_hash
-
 from services.UsersService import *
 from flask_jwt_extended import create_access_token
 

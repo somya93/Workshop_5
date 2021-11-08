@@ -1,17 +1,14 @@
-from flask import Flask, make_response
+from flask import Flask
 from flask_jwt_extended import JWTManager
-from flask_jwt_extended.exceptions import JWTExtendedException
 from flask_restful import Api
-from jwt import ExpiredSignatureError, exceptions as jwt_exception
+from jwt import exceptions as jwt_exception
 
 from database.db import initialize_db
-from exceptions.ApiException import ApiException
 from utils.JSONEncoder import MongoEngineJSONEncoder
 from resources.Users import Users
 from resources.Sessions import Sessions
 from resources.Riders import Riders
 from resources.Trips import Trips
-from flask import jsonify
 
 app = Flask(__name__)  # Creating a FLASK app
 app.config['MONGODB_SETTINGS'] = {

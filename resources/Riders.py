@@ -18,7 +18,6 @@ class Riders(Resource):
     @jwt_required()
     def get(self, rider_id=None):
         email_identity = get_jwt_identity()
-        print(email_identity)
         if rider_id is None:
             rider = get_rider_by_email(email_identity)
         else:
