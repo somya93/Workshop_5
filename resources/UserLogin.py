@@ -6,8 +6,8 @@ from services.UserService import *
 from flask_jwt_extended import create_access_token
 
 login_parser = reqparse.RequestParser()
-login_parser.add_argument('email', type=str)
-login_parser.add_argument('password', type=str)
+login_parser.add_argument('email', type=str, default="")
+login_parser.add_argument('password', type=str, default="")
 
 
 class UserLogin(Resource):
@@ -16,6 +16,8 @@ class UserLogin(Resource):
 
     def post(self):
         args = login_parser.parse_args()
+        if len(args.email) == 0 or len(args.password) == 0:
+            return "ERROR! email and password are required fields.", 400
         found_user = find_user_by_email(args.email)
         if found_user:
             password_hash = get_hash(args.password.encode('utf-8'))

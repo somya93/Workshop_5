@@ -6,8 +6,8 @@ from services.UserService import *
 from flask_jwt_extended import create_access_token
 
 reg_parser = reqparse.RequestParser()
-reg_parser.add_argument('email', type=str)
-reg_parser.add_argument('password', type=str)
+reg_parser.add_argument('email', type=str, default="")
+reg_parser.add_argument('password', type=str, default="")
 
 
 class UserRegistration(Resource):
@@ -17,7 +17,9 @@ class UserRegistration(Resource):
     def post(self):
         args = reg_parser.parse_args()
         found_user = find_user_by_email(args.email)
-        if found_user:
+        if len(args.email) == 0 or len(args.password) == 0:
+            return "ERROR! email and password are required fields.", 400
+        elif found_user:
             return "Account with this email already exists", 400
 
         password_hash = get_hash(args.password.encode('utf-8'))

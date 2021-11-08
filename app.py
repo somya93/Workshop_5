@@ -29,7 +29,10 @@ api.add_resource(RiderResource,
                  '/rider/',
                  '/rider/<string:rider_id>')
 
+# http://localhost:5000/register?email=value&password=value
 api.add_resource(UserRegistration, '/register')
+
+# http://localhost:5000/login?email=value&password=value
 api.add_resource(UserLogin, '/login')
 
 
