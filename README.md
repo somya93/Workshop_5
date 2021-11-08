@@ -39,3 +39,28 @@ Trip model has been added, and can only be accessed as a sub-resource (GET, POST
 ## Note
 
 In order to avoid any model inconsistencies, please <b> delete </b> any existing database named <b> app-rest </b> using MongoDB Compass.
+
+In Postman, once you have logged in (/login) and got an 'access_token', click 'Authorization' and paste the token in the text box with type set to 'Bearer Token'.
+
+## Example Postman Requests
+
+0. [GET] http://localhost:5000/rider
+- This should throw an error due to missing JWT token.
+1. [POST] http://localhost:5000/login?email=phil@cmu.org&password=phil
+- Copy the access token in the JSON response and paste it into the 'Authorization' tab as a 'Bearer Token' type.
+- Do not copy the "" double-quotes surrounding the long token string.
+2. [GET] http://localhost:5000/rider
+- This should return the rider details in JSON format. Copy the 'rider_id' value which is required in all subsequent steps.
+3. [GET] http://localhost:5000/rider/rider_id
+- Use the 'rider_id' value obtained from the earlier step, and you should get the same rider details.
+4. [PATCH] http://localhost:5000/rider/rider_id?premium=true
+- This should update the 'premium' field of the rider to 'true'.
+5. [GET] http://localhost:5000/rider/rider_id/trip
+- This should return an empty JSON list since we haven't created any trips yet.
+6. [POST] http://localhost:5000/rider/rider_id/trip?fare=42
+- This should create and return a trip object with 'fare' set to 42.
+7. [GET] http://localhost:5000/rider/rider_id/trip
+- This should return the trip that was just created in the earlier step.
+
+Note that in each of the above steps (except the first 3 where we still didn't know the 'rider_id'), the 'rider_id' is used to compare the email associated with that Rider against the email associated with the User, using the JWT access token obtained from login/
+If the email fields of the Rider (from 'rider_id') and the User (from JWT 'access_token' during login/) don't match, you will get an error.
