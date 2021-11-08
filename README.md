@@ -62,5 +62,6 @@ In Postman, once you have logged in (/login) and got an 'access_token', click 'A
 7. [GET] http://localhost:5000/rider/rider_id/trip
 - This should return the trip that was just created in the earlier step.
 
-Note that in each of the above steps (except the first 3 where we still didn't know the 'rider_id'), the 'rider_id' is used to compare the email associated with that Rider against the email associated with the User, using the JWT access token obtained from login/
-If the email fields of the Rider (from 'rider_id') and the User (from JWT 'access_token' during login/) don't match, you will get an error.
+Note that in each of the above steps (except the first 3 where we still didn't know the 'rider_id'), the 'rider_id' is required.
+If the email fields of the Rider (with 'rider_id') and the User (from JWT 'access_token' during login/) don't match, you will get an error.
+This ensures that only data corresponding to the currently logged-in User can be accessed (GET, POST, PATCH, etc.).
