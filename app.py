@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_restful import Api
 from database.db import initialize_db
-from resources.RiderResource import RiderResource
 from utils.JSONEncoder import MongoEngineJSONEncoder
 from authentication.jwt import initialize_jwt
 from resources.UserRegistration import UserRegistration
 from resources.UserLogin import UserLogin
+from resources.RiderResource import RiderResource
+from resources.TripResource import TripResource
 
 app = Flask(__name__)  # Creating a FLASK app
 app.config['MONGODB_SETTINGS'] = {
@@ -21,6 +22,12 @@ app.json_encoder = MongoEngineJSONEncoder
 api = Api(app)  # Creating a REST API for the app
 
 
+# http://localhost:5000/register?email=value&password=value
+api.add_resource(UserRegistration, '/register')
+
+# http://localhost:5000/login?email=value&password=value
+api.add_resource(UserLogin, '/login')
+
 # http://localhost:5000/rider
 # http://localhost:5000/rider/rider_id
 # http://localhost:5000/rider/rider_id?arg=value
@@ -29,11 +36,9 @@ api.add_resource(RiderResource,
                  '/rider/',
                  '/rider/<string:rider_id>')
 
-# http://localhost:5000/register?email=value&password=value
-api.add_resource(UserRegistration, '/register')
-
-# http://localhost:5000/login?email=value&password=value
-api.add_resource(UserLogin, '/login')
+# http://localhost:5000/rider/rider_id/trip?arg=value
+api.add_resource(TripResource,
+                 '/rider/<string:rider_id>/trip')
 
 
 @app.route('/')
