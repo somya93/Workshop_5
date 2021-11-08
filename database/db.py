@@ -1,6 +1,7 @@
 from flask_mongoengine import MongoEngine
-from services.RiderService import init_riders
-from services.UserService import init_users
+from services.RidersService import init_riders
+from services.UsersService import init_users
+
 
 db = MongoEngine()
 

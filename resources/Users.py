@@ -2,7 +2,7 @@ from flask import jsonify, make_response
 from flask_restful import reqparse, Resource
 from utils.Hash import get_hash
 
-from services.UserService import *
+from services.UsersService import *
 from flask_jwt_extended import create_access_token
 
 reg_parser = reqparse.RequestParser()
@@ -10,7 +10,7 @@ reg_parser.add_argument('email', type=str, default="")
 reg_parser.add_argument('password', type=str, default="")
 
 
-class UserRegistration(Resource):
+class Users(Resource):
     def get(self):
         return "Use POST method to register", 200
 

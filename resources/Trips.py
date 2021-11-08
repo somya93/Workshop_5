@@ -1,7 +1,7 @@
 from flask_restful import reqparse, Resource
 from flask import make_response   # returns an HTML response
-from services.RiderService import *
-from services.TripService import *
+from services.RidersService import *
+from services.TripsService import *
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 post_parser = reqparse.RequestParser()
@@ -10,7 +10,7 @@ post_parser.add_argument('fare', type=str, default="")
 headers = {'Content-Type': 'application/json'}
 
 
-class TripResource(Resource):
+class Trips(Resource):
     @jwt_required()
     def get(self, rider_id):
         email_identity = get_jwt_identity()
