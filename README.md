@@ -35,3 +35,7 @@ The reason to have User model separate from Rider model is for supporting Users 
 Note that we don't save the actual password (still one of the #1 security blunders), but save a hashed version of it which is checked against the hashed-user-entered-password each time.
 
 Trip model has been added, and can only be accessed as a sub-resource (GET, POST) of Rider.
+
+## Note
+
+In order to avoid any model inconsistencies, please <b> delete </b> any existing database named <b> app-rest </b> using MongoDB Compass.
