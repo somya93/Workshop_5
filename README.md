@@ -69,7 +69,7 @@ token in the text box with type set to 'Bearer Token'.
 - This should return the rider details in JSON format. Copy the 'rider_id' value which is required in all subsequent steps.
 3. [GET] http://localhost:5000/rider/:rider_id
 - Use the 'rider_id' value obtained from the earlier step, and you should get the same rider details.
-4. [PATCH] http://localhost:5000/rider/rider_id with JSON request body `{"premium":true}`
+4. [PATCH] http://localhost:5000/rider/:rider_id with JSON request body `{"premium":true}`
 - This should update the 'premium' field of the rider to 'true'.
 5. [GET] http://localhost:5000/rider/:rider_id/trips
 - This should return an empty JSON list since we haven't created any trips yet.
