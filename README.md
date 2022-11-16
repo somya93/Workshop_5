@@ -61,7 +61,7 @@ token in the text box with type set to 'Bearer Token'.
 
 0. [GET] http://localhost:5000/riders
 - This should throw an error due to missing JWT token.
-1. [POST] http://localhost:5000/sessions with a JSON request body `{"email": "phil@cmu.org", "password" : "phil"}`
+1. [POST] http://localhost:5000/sessions with a JSON request body `{"email": "somya@cmu.org", "password" : "somya"}`
 - This returns a response body with access token
 - For all new requests, you will include this access token in the `Authorization` tab as a `Bearer Token` type
 - Do not copy the "" double-quotes surrounding the long token string.
