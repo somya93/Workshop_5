@@ -3,7 +3,7 @@ import uuid
 
 default_riders = {'Karim': 'karim@cmu.org',
                   'Manuja': 'manuja@cmu.org',
-                  'Phil': 'phil@cmu.org'}
+                  'Somya': 'somya@cmu.org'}
 
 
 def get_rider_by_id(rider_id: str):  # Service for the GET() method
