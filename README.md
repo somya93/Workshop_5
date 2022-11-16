@@ -1,6 +1,6 @@
-# Workshop 6
+# Workshop 5
 
-In this workshop, introduce sub-resources and JWT authentication.
+In this workshop, we introduce sub-resources and JWT authentication.
 
 ## Prerequisites
 
