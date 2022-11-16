@@ -3,7 +3,7 @@ from utils.Hash import get_hash
 
 default_users = {'karim@cmu.org': 'karim',
                  'manuja@cmu.org': 'manuja',
-                 'phil@cmu.org': 'phil'}
+                 'somya@cmu.org': 'somya'}
 
 
 def create_user(email: str, password_hash: str):
